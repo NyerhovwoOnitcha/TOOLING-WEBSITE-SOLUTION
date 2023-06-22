@@ -280,8 +280,8 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 
 `sudo yum module reset php`
 
-`sudo dnf module enable php:8.0`
-`sudo dnf module -y install php:8.0/common`
+`sudo dnf module enable php:8.1`
+`sudo dnf module -y install php:8.1/common`
 
 `sudo yum install php php-opcache php-gd php-curl php-mysqlnd`
 
@@ -304,6 +304,7 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 ![](./images/deafult%20redhat%20page.png)
 
 ### Verify that apache has been installed, Locate the log folder for Apache on the Web Server and mount it to NFS server’s export for logs and edit the /etc/fstab file for persistence
+
 
 `sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/logs /var/log/httpd`
 
@@ -341,6 +342,12 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 ### restart httpd
 `sudo systemctl restart httpd`
 
+## STEP 4
+
+### Edit your DB server security group to allow trafiic from your webserver subnet CIDR
+
+![](./images/mysql%20security%20group%20settings.png)
+
 ### Update the website configuration in /var/www/html/functions.php so it can connect to the database. On the connect to database section, put in your database IP-address, database user and password.
 `sudo vi /var/www/html/functions.php`
 
@@ -358,7 +365,7 @@ $db = mysqli_connect('<Database private ip>', 'Database username', 'Database pas
 ### Try to connect from your webserver to your Database from your command line (when prompted for password, your password is webman)
 `sudo mysql -u <DB username> -p -h <DB server private address>`
 
-`sudo mysql -u webman -p -h 172.31.3.139`
+`sudo mysql -u webman -p -h 172.31.88.40`
 
 
 ### Apply tooling-db.sql script to your database.(when prompted for password, your password is webman)
@@ -366,7 +373,7 @@ $db = mysqli_connect('<Database private ip>', 'Database username', 'Database pas
 ```
 mysql -h <databse-private-ip> -u <db-username> -p <db-name> < tooling-db.sql
 
-mysql -h 172.31.3.139 -u webaccess -p tooling < tooling-db.sql
+mysql -h 172.31.88.40 -u webman -p tooling < tooling-db.sql
 ```
 
 
@@ -385,5 +392,7 @@ mysql -h 172.31.3.139 -u webaccess -p tooling < tooling-db.sql
 
 ![login](./images/login%20as%20myuser.png)
 
+## STEP 5
+### Repeat step 3 for the 2 other webservers
 
 
