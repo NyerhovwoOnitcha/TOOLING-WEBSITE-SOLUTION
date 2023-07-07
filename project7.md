@@ -3,8 +3,11 @@
 
 ### Launch a server(Redhat OS), create 3 volumes in the same AZ as your instances.(10GiB). Proceed to attach all 3 volumes one by one to your web server instance
 ```create volumes```
-![create volume](./images/how%20to.jpg)
-![create volume](./images/how%20to2.jpg)
+
+
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/5459e501-5078-455c-9246-3315f833ab72
+
+
 
 ### Use the `lsblk` command to check the devices on your instance before attaching your volumes
 
