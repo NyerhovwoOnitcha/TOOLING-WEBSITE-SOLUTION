@@ -5,7 +5,7 @@
 ```create volumes```
 
 
-https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/5459e501-5078-455c-9246-3315f833ab72
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/ed2ebcbc-823f-4988-ac62-11472e1f4fda
 
 
 
@@ -29,6 +29,12 @@ sudo gdisk /dev/xvdg
 
 sudo gdisk /dev/xvdh
 ```
+
+
+
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/4be696d0-24c1-41fa-a1fb-7747f985942c
+
+
 
 ### Use $lsblk to view the new configured partitions o the 3 disks.
 ![each attached volumes partitioned](./images/each%20attached%20volumes%20parttioned%20with%20gdisk.png)
@@ -323,11 +329,19 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 
 ### Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
 
+
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/261b7c4e-3071-4561-8bfe-4429c72ddabf
+
+
+
+
 `git clone https://github.com/NyerhovwoOnitcha/tooling.git`
 
 `sudo cp -R tooling/html/. /var/www/html`
 
 ![deploy code](./images/deploy%20code.jpg)
+
+
 
 
 ### Open port 80 on your web server and disable SELINUX
@@ -365,6 +379,12 @@ $db = mysqli_connect('<Database private ip>', 'Database username', 'Database pas
 
 
 ### Try to connect from your webserver to your Database from your command line (when prompted for password, your password is webman)
+
+
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/552c00e9-0b66-4031-9b7d-025d7a5a184c
+
+
+
 `sudo mysql -u <DB username> -p -h <DB server private address>`
 
 `sudo mysql -u webman -p -h 172.31.88.40`
@@ -380,6 +400,9 @@ mysql -h 172.31.88.40 -u webman -p tooling < tooling-db.sql
 
 
 ### Create in MySQL a new admin user with username: myuser and password: password
+
+https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/68210cb7-8b9c-4592-9825-49f7b427069a
+
 `INSERT INTO users (id, username, password, email, user_type, status)`
 
 ` -> VALUES (2, 'myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', '2');`
@@ -396,5 +419,8 @@ mysql -h 172.31.88.40 -u webman -p tooling < tooling-db.sql
 
 ## STEP 5
 ### Repeat step 3 for the 2 other webservers
+
+### Test that your webservers are serving the same content
+
 
 
