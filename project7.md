@@ -14,7 +14,6 @@ https://github.com/NyerhovwoOnitcha/TOOLING-WEBSITE-SOLUTION/assets/101157174/54
 ![before attachment](./images/before%20attaching%20volumes.png)
 
 ### When attaching the volume ensure your web server is in the same AZ as the volume
-![steps to attach](./images/steps%20to%20attach.jpg)
 
 
 ### use the $lsblk command to see all block devices attached to the server. Your newly added block devices xvdf, xvdg and xvdh should be there
